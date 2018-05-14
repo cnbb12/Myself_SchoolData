@@ -42,6 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="grades.cs" />
     <Compile Include="common.cs" />
     <Compile Include="user.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

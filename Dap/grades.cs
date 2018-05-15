@@ -9,6 +9,11 @@ namespace Dap
 {
     public class grades
     {
+        /// <summary>
+        /// 通过年级找到对应班级
+        /// </summary>
+        /// <param name="grade"></param>
+        /// <returns> 班级数组</returns>
         public static List<Models.Grades> findClas(string grade)
         {
             using (DataContext dc = new DataContext(common.conn))

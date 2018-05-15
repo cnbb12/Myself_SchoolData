@@ -42,8 +42,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="discipline.cs" />
     <Compile Include="grades.cs" />
     <Compile Include="common.cs" />
+    <Compile Include="resource.cs" />
+    <Compile Include="type.cs" />
     <Compile Include="user.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -16,7 +16,7 @@ namespace Dap
         /// <param name="userName"></param>
         /// <param name="key"></param>
         /// <returns></returns>
-        public static Guid checkLogin(string userName, string key)
+        public static Models.User checkLogin(string userName, string key)
         {
             using (DataContext dc = new DataContext(common.conn))
             {
@@ -25,7 +25,7 @@ namespace Dap
                            select x;
                 if (user.Count() == 1)
                 {
-                    return user.First().ID;
+                    return (Models.User)user;
                 }
                 else throw (new Exception("请输入正确的用户名和口令。"));
             }

@@ -15,7 +15,7 @@ namespace SchoolData.Controllers
         /// 根据年级查找班级
         /// </summary>
         /// <param name="grade"></param>
-        /// <returns></returns>
+        /// <returns>对应班级数组</returns>
         [HttpGet]
         public RESULT FindClas(string grade)
         {
@@ -31,5 +31,7 @@ namespace SchoolData.Controllers
             }
             return result;
         }
+
+
     }
 }

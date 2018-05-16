@@ -14,7 +14,7 @@ namespace SchoolData.Controllers
         /// 检查登录是否成功
         /// </summary>
         /// <param name="userName"></param>g
-        /// <param name="password"></param>
+        /// <param name="key"></param>
         /// <returns></returns>
         [HttpGet]
         public RESULT checkLogin(string userName, string key)
@@ -59,9 +59,20 @@ namespace SchoolData.Controllers
         /// </summary>
         /// <param name="userID"></param>
         [HttpDelete]
-        public void DeleteUser(string userID)
+        public RESULT DeleteUser(string userID)
         {
-            Dap.user.DeleteUser(userID);
+            RESULT result = new RESULT();
+            try
+            {
+                Dap.user.DeleteUser(userID);
+            }
+            catch (Exception e)
+            {
+                result.state = false;
+                result.msg = e.Message;
+            }
+            return result;
+           
         }
 
         /// <summary>
@@ -70,9 +81,19 @@ namespace SchoolData.Controllers
         /// <param name="userID"></param>
         /// <returns></returns>
         [HttpGet]
-        public IHttpActionResult GetUser(string userID)
+        public RESULT GetUser(string userID)
         {
-            return Json<List<Models.User>>(Dap.user.GetUsers(userID));
+            RESULT result = new RESULT();
+            try
+            {
+                result.result = Json<List<Models.User>>(Dap.user.GetUsers(userID));;
+            }
+            catch (Exception e)
+            {
+                result.state = false;
+                result.msg = e.Message;
+            }
+            return result;
 
         }
 
@@ -82,9 +103,19 @@ namespace SchoolData.Controllers
         /// </summary>
         /// <param name="user"></param>
         [HttpPost]
-        public void UpdateUser(Models.User user)
+        public RESULT UpdateUser(Models.User user)
         {
-            Dap.user.UpdateUser(user);
+            RESULT result = new RESULT();
+            try
+            {
+                result.result = Dap.user.UpdateUser(user);
+            }
+            catch (Exception e)
+            {
+                result.state = false;
+                result.msg = e.Message;
+            }
+            return result;
         }
 
     }

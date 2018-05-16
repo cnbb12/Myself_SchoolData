@@ -26,12 +26,18 @@ namespace Models
         public string FTPServerPath { get; set; }
 
         [Column]
-        public int TypeID { get; set; }
+        public string Type { get; set; }
 
         [Column]
-        public int DisciplineID { get; set; }
+        public string Discipline { get; set; }
 
         [Column]
-        public int GradesID { get; set; }
+        public string Grades { get; set; }
+
+        [Column]
+        public string Clas { get; set; }
+
+        [Column]
+        public string Form { get; set; }
     }
 }

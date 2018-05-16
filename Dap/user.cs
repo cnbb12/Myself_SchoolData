@@ -25,7 +25,7 @@ namespace Dap
                            select x;
                 if (user.Count() == 1)
                 {
-                    return (Models.User)user;
+                    return user.First();
                 }
                 else throw (new Exception("请输入正确的用户名和口令。"));
             }
@@ -97,7 +97,7 @@ namespace Dap
         /// 用户信息更新
         /// </summary>
         /// <param name="user"></param>
-        public static void UpdateUser(Models.User user)
+        public static Models.User UpdateUser(Models.User user)
         {
             using (DataContext dc = new DataContext(Dap.common.conn))
             {
@@ -111,8 +111,13 @@ namespace Dap
                 _user.E_mail = user.E_mail;
                 _user.Password = user.Password;
                 dc.SubmitChanges();
-
+                if (_user != null)
+                {
+                    return _user;
+                }
+                else throw (new Exception("修改失败"));
             }
         }
+            
     }
 }

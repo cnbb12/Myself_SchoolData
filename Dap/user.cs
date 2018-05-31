@@ -20,14 +20,21 @@ namespace Dap
         {
             using (DataContext dc = new DataContext(common.conn))
             {
-                var user = from x in dc.GetTable<Models.User>()
-                           where x.UserName == userName && x.Password == key
-                           select x;
-                if (user.Count() == 1)
+                if (userName == "" || key == "")
                 {
-                    return user.First();
+                    throw (new Exception("用户名或密码不能为空"));
                 }
-                else throw (new Exception("请输入正确的用户名和口令。"));
+                else
+                {
+                    var user = from x in dc.GetTable<Models.User>()
+                               where x.UserName == userName && x.Password == key
+                               select x;
+                    if (user.Count() == 1)
+                    {
+                        return user.First();
+                    }
+                    else throw (new Exception("用户名或密码错误"));
+                }
             }
         }
 
@@ -38,16 +45,31 @@ namespace Dap
         /// <param name="user"></param>
         /// <returns></returns>
 
-        public static Guid Add(Models.User user)
+        public static Guid Add(string userName,string phoneNumber,string key)
         {
-            using (DataContext dc = new DataContext(Dap.common.conn))
+            if (userName == "" || phoneNumber == "" || key == "")
             {
-                var tb = dc.GetTable<Models.User>();
-                tb.InsertOnSubmit(user);
-                dc.SubmitChanges();//后台自动生成用户ID
-                return user.ID;
+                throw (new Exception("请将注册信息填写完整"));
             }
-
+            else if (phoneNumber.Length != 11)
+            {
+                throw (new Exception("请输入正确的手机号"));
+            }
+            else
+            {
+                using (DataContext dc = new DataContext(Dap.common.conn))
+                {
+                    var tb = dc.GetTable<Models.User>();
+                    Models.User user = new Models.User();
+                    user.UserName = userName;
+                    user.MobilePhone = phoneNumber;
+                    user.Password = key;
+                    user.ID = System.Guid.NewGuid();
+                    tb.InsertOnSubmit(user);
+                    dc.SubmitChanges();//后台自动生成用户ID
+                    return user.ID;
+                }
+            }
         }
 
         /// <summary>

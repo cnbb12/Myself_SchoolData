@@ -23,9 +23,6 @@ namespace Models
         public int Size { get; set; }
 
         [Column]
-        public string FTPServerPath { get; set; }
-
-        [Column]
         public string Type { get; set; }
 
         [Column]
@@ -39,5 +36,8 @@ namespace Models
 
         [Column]
         public string Form { get; set; }
+
+        [Column]
+        public int UploadUserID { get; set; }
     }
 }

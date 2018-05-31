@@ -25,10 +25,7 @@ namespace Models
         [Column]
         public string MobilePhone { get; set; }
 
-        [Column]
-        public string UserFolderFTP { get; set; }
-
-        [Column]
-        public Guid ID { get; set; }
+        [Column(IsPrimaryKey = true)]
+        public  Guid ID { get; set; }
     }
 }

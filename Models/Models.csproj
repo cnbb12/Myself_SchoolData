@@ -42,6 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Discipline.cs" />
+    <Compile Include="Form.cs" />
     <Compile Include="Grades.cs" />
     <Compile Include="Resource.cs" />
     <Compile Include="Type.cs" />

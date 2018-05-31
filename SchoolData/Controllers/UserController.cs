@@ -33,18 +33,21 @@ namespace SchoolData.Controllers
         }
 
 
+        
         /// <summary>
-        /// 添加用户
+        /// 注册新用户
         /// </summary>
-        /// <param name="user"></param>
+        /// <param name="userName"></param>
+        /// <param name="phoneNumber"></param>
+        /// <param name="key"></param>
         /// <returns></returns>
         [HttpPost]
-        public RESULT AddUser(Models.User user)
+        public RESULT AddUser(dynamic p)
         {
             RESULT result = new RESULT();
             try
             {
-                result.result = Dap.user.Add(user);
+                result.result = Dap.user.Add((string)p.userName, (string)p.phoneNumber, (string)p.key);
             }
             catch (Exception e)
             {

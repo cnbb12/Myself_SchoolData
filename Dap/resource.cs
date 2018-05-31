@@ -21,9 +21,10 @@ namespace Dap
         {
             using (DataContext dc = new DataContext(common.conn))
             {
-                if (keyword == "")
+                if (!string.IsNullOrWhiteSpace(keyword))
                 {
                     var resource = from x in dc.GetTable<Models.Resource>()
+                                   where x.Name.Contains(keyword)
                                    select x;
                     if (resource.Count() >= 1)
                     {
@@ -33,11 +34,11 @@ namespace Dap
                     {
                         throw (new Exception("没有找到对应资源"));
                     }
+                    
                 }
                 else
                 {
                     var resource = from x in dc.GetTable<Models.Resource>()
-                                   where x.Name.Contains(keyword)
                                    select x;
                     if (resource.Count() >= 1)
                     {
@@ -105,9 +106,10 @@ namespace Dap
         {
             using (DataContext dc = new DataContext(common.conn))
             {
-                if (formName == "")
+                if (!string.IsNullOrWhiteSpace(formName))
                 {
                     var resource = from x in dc.GetTable<Models.Resource>()
+                                   where x.Form== formName
                                    select x;
                     if (resource.Count() >= 1)
                     {
@@ -118,7 +120,6 @@ namespace Dap
                 else
                 {
                     var resource = from x in dc.GetTable<Models.Resource>()
-                                   where x.Form == formName
                                    select x;
                     if (resource.Count() >= 1)
                     {
@@ -141,7 +142,7 @@ namespace Dap
         {
             using (DataContext dc = new DataContext(common.conn))
             {
-                if (grade == "" && clas != "") {
+                if (string.IsNullOrWhiteSpace(grade) && !(string.IsNullOrWhiteSpace(clas))) {
                     var resource = from x in dc.GetTable<Models.Resource>()
                                    where x.Clas == clas
                                    select x;
@@ -151,7 +152,7 @@ namespace Dap
                     }
                     else throw (new Exception("没有找到对应资源"));
                 }
-                else if (grade != "" && clas == "")
+                else if (!(string.IsNullOrWhiteSpace(grade)) && string.IsNullOrWhiteSpace(clas))
                 {
                     var resource = from x in dc.GetTable<Models.Resource>()
                                    where x.Grades == grade

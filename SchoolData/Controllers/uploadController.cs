@@ -11,8 +11,13 @@ namespace SchoolData.Controllers
 {
     public class uploadController : ApiController
     {
+        /// <summary>
+        /// 文件上传
+        /// </summary>
+        /// <param name="userId"></param>
+        /// <returns></returns>
         [HttpPost]
-        public Dap.RESULT Upload()
+        public Dap.RESULT Upload(String userId)
         {
             Dap.RESULT result = new Dap.RESULT();
             try
@@ -23,7 +28,8 @@ namespace SchoolData.Controllers
                 if (files.Count > 0) {
                     HttpPostedFile hpf = files[0];
 
-                    string folder = System.Web.HttpContext.Current.Server.MapPath(".");//文件保存路径
+                    //资源放入以上传者命名的文件夹
+                    string folder = System.Web.HttpContext.Current.Server.MapPath(".\\"+userId);//文件保存路径
                     string fileName, extname = Path.GetExtension(hpf.FileName);
 
                     if (!Directory.Exists(folder))

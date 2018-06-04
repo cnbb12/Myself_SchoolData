@@ -1,17 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Linq.Mapping;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Data.Linq.Mapping;
 
 namespace Models
 {
     [Table(Name = "Resource")]
     public class Resource
     {
-        [Column]
-        public int ID { get; set; }
+        [Column(IsPrimaryKey = true)]
+        public Guid ID { get; set; }
 
         [Column]
         public string Name { get; set; }
@@ -38,6 +38,6 @@ namespace Models
         public string Form { get; set; }
 
         [Column]
-        public int UploadUserID { get; set; }
+        public Guid UploadUserID { get; set; }
     }
 }

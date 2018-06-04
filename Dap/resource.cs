@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 using Models;
 using System.Data.Linq.Mapping;
 using System.Data.Linq;
-using Models;
+using System.Web;
+using System.IO;
 
 namespace Dap
 {
@@ -185,6 +186,12 @@ namespace Dap
                 }
             }
         }
+         
+        public static void uploadToSQL(string name,DateTime create_time,int size,string type,string discipline,string form)
+        {
+
+        }
+        
 
     }
 }

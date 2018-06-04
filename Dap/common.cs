@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Dap
 {
-    class common
+    public class common
     {
         public static String conn
         {

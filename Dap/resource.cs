@@ -187,7 +187,7 @@ namespace Dap
             }
         }
          
-        public static void uploadToSQL(string name,DateTime create_time,int size,string type,string discipline,string form)
+        public static void uploadToSQL(string name,String create_time,int size,string type,string discipline,string form)
         {
 
         }

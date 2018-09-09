@@ -17,7 +17,7 @@ namespace Models
         public string Name { get; set; }
 
         [Column]
-        public DateTime CreateTime { get; set; }
+        public String CreateTime { get; set; }
 
         [Column]
         public int Size { get; set; }
@@ -36,6 +36,9 @@ namespace Models
 
         [Column]
         public string Form { get; set; }
+
+        [Column]
+        public string Suffix { get; set; }
 
         [Column]
         public Guid UploadUserID { get; set; }

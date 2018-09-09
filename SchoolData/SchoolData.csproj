@@ -109,6 +109,7 @@
     <Compile Include="App_Start\HttpHeaderFilter.cs" />
     <Compile Include="App_Start\SwaggerConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\DownloadController.cs" />
     <Compile Include="Controllers\GradesController.cs" />
     <Compile Include="Controllers\ResourceController.cs" />
     <Compile Include="Controllers\uploadController.cs" />

@@ -21,6 +21,26 @@ namespace SchoolData.Controllers
         [HttpPost]
         public Dap.RESULT Upload(Guid userId,string grade,string clas,string type,string form,string discipline)
         {
+            if (string.IsNullOrEmpty(grade))
+            {
+                throw new ArgumentException("message", nameof(grade));
+            }
+
+            if (string.IsNullOrEmpty(clas))
+            {
+                throw new ArgumentException("message", nameof(clas));
+            }
+
+            if (string.IsNullOrEmpty(form))
+            {
+                throw new ArgumentException("message", nameof(form));
+            }
+
+            if (string.IsNullOrEmpty(discipline))
+            {
+                throw new ArgumentException("message", nameof(discipline));
+            }
+
             Dap.RESULT result = new Dap.RESULT();
             try
             {
@@ -55,9 +75,10 @@ namespace SchoolData.Controllers
                         _resource.Clas = clas;
                         _resource.Type = type;
                         _resource.Form = form;
+                        _resource.Suffix = extname;//后缀名
                         _resource.ID = Guid.NewGuid();
                         _resource.Discipline = discipline;
-                        _resource.CreateTime = DateTime.Now;
+                        _resource.CreateTime = DateTime.Now.ToString("d");//时间以xx-x-x形式显示
                         tb.InsertOnSubmit(_resource);
                         dc.SubmitChanges();
                     }
